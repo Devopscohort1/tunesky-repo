@@ -18,13 +18,17 @@ pipeline {
    
     stage('unit Test') {
         steps {
+            dir('my-app') {      // Replace 'my-app' with your actual folder
             sh 'mvn test'
+            }
         }
     }
 
     stage('Build') {
         steps {
-            sh 'mvn install' 
+            dir('my-app') {
+            sh 'mvn install'
+            }
             }
         }
     
