@@ -24,7 +24,7 @@ pipeline {
 
     stage('Build') {
         steps {
-            sh 'mvn install' -DskipTest'
+            sh 'mvn install' 
             }
         }
     
