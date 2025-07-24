@@ -6,8 +6,7 @@ pipeline {
     }
 
     tools {
-        maven ""
-        jdk ""
+        maven "MAVEN3.9"
     } 
     stages {
         stage ('fetch code')
