@@ -18,7 +18,7 @@ pipeline {
    
     stage('unit Test') {
         steps {
-            dir('my-app') {      // Replace 'my-app' with your actual folder
+            dir('jenkins-custom') {      // Replace 'jenkins-custom' with your actual folder
             sh 'mvn test'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
 
     stage('Build') {
         steps {
-            dir('my-app') {
+            dir('jenkins-custom') {
             sh 'mvn install'
             }
             }
