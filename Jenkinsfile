@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     enironment{
-        NODE_ENV ='development'
+        NODE_ENV = 'development'
     }
 
     tools {
