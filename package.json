@@ -5,7 +5,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+  "test": "vitest run --config vite.config.mjs"
+}
+
   },
   "dependencies": {
     "react": "^19.1.0",
