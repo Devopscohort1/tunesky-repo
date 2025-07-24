@@ -9,7 +9,7 @@ pipeline {
         maven "MAVEN3.9"
     } 
     stages {
-        stage ('fetch code')
+        stage ('Clone repository)
         steps {
             git branch: 'main', url: 'https://github.com/Devopscohort1/tunesky-repo.git'
         }
