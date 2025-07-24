@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    enironment{
+    environment {
         NODE_ENV = 'development'
     }
 
@@ -9,20 +9,25 @@ pipeline {
         maven "MAVEN3.9"
     } 
     stages {
-        stage ('Clone repository'){
+
+        stage('Clone repository') {
         steps {
             git branch: 'main', url: 'https://github.com/Devopscohort1/tunesky-repo.git'
+            }
         }
-    }
-    stage ('unit Test'){
+   
+    stage('unit Test') {
         steps {
             sh 'mvn test'
         }
     }
-    stage ('Buid'){
+
+    stage('Build') {
         steps {
             sh 'mvn install' 
+            }
         }
+    
     }
     post {
         success {
