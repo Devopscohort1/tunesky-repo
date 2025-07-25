@@ -4,37 +4,43 @@ pipeline {
     environment {
         NODE_ENV = 'development'
     }
+
     tools {
-        nodejs 'NodeJs 21.2.0'
+        nodejs 'NodeJS-22.12.0' // Make sure this is configured in Jenkins
     }
-    stages{
-        stage('clone repository') {
+
+    stages {
+        stage('Clone repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/Devopscohort1/tunesky-repo.git'
             }
         }
-        stage('install dependencies') {
+
+        stage('Install Dependencies') {
             steps {
-            sh 'npm install'
-            }
-        } 
-        stage( 'run test') {
-            steps {
-                sh ' npm run test'
+                sh 'npm install'
             }
         }
-        stage('Build test'){
+
+        stage('Run Tests') {
+            steps {
+                sh 'npm run test'
+            }
+        }
+
+        stage('Build') {
             steps {
                 sh 'npm run build'
             }
         }
     }
+
     post {
         success {
-            echo 'successful'
+            echo 'CI pipeline completed successfully.'
         }
         failure {
-            echo 'failed!'
+            echo 'CI pipeline failed!'
         }
     }
 }
