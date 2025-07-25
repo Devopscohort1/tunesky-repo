@@ -4,42 +4,37 @@ pipeline {
     environment {
         NODE_ENV = 'development'
     }
-
     tools {
-       nodejs 'NodeJS-22'
-    } 
-    stages {
-
-        stage('Clone repository') {
-        steps {
-            git branch: 'main', url: 'https://github.com/Devopscohort1/tunesky-repo.git'
-            }
-        }
-   
-    stage('unit Test') {
-        steps {
-            dir('jenkins-custom') {      // Replace 'jenkins-custom' with your actual folder
-            sh 'mvn test'
-            }
-        }
+        nodejs 'NodeJs 21.2.0'
     }
-
-    stage('Build') {
-        steps {
-            dir('jenkins-custom') {
-            sh 'mvn install'
-            }
+    stages{
+        stage('clone repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Devopscohort1/tunesky-repo.git'
             }
         }
-    
+        stage('install dependencies') {
+            steps {
+            sh 'npm install'
+            }
+        } 
+        stage( 'run test') {
+            steps {
+                sh ' npm run test'
+            }
+        }
+        stage('Build test'){
+            steps {
+                sh 'npm run build'
+            }
+        }
     }
     post {
         success {
-            echo 'CI pipeline completed successfully.'
+            echo 'successful'
         }
         failure {
-            echo 'CI pipeline failed!'
+            echo 'failed!'
         }
-
     }
 }
