@@ -4,6 +4,7 @@ pipeline {
     environment {
         NODE_ENV = 'development'
     }
+ HEAD
 
     tools {
         nodejs 'NodeJS-22.12.0' // Make sure this is configured in Jenkins
@@ -44,3 +45,16 @@ pipeline {
         }
     }
 }
+
+    tools {
+        nodejs 'NodeJs 21.2.0'
+    }
+    stages{
+        stage('clone repository') {
+            steps {
+                git branch: 'main', url: 'http '
+            }
+        }
+    }
+}
+ 42c3cfd (Fix: Use working pip path for requirements installation)
